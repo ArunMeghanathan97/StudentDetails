@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Contents/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">@Html.ActionLink("Home","Index","Home",null, new { @class = "nav-link" })</li>
+            <li class="nav-item">@Html.ActionLink("Student", "Index", "Students",null , new { @class = "nav-link" })</li>
+        </ul>
+    </nav>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap") 
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿@using System;
+@using System.Collections;
+@using System.Collections.Generic;
+
+@{
+    ViewBag.Title = "Index";
+    var listVal = (List<Dictionary<string, string>>)ViewBag.listVal;
+}
+
+<div class="container">
+    @Html.ActionLink("Stduents", "Create", "Students", null, new { @class = "btn btn-success" })
+     @Html.ActionLink("Add Address", "AddAddress", "Students", null, new { @class = "btn btn-success" })
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Address</th>            
+                <th>Action</th>
+            </tr>
+        </thead>
+        @if(listVal != null){
+            foreach (var item in listVal)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(ModelItem => item["Name"])</td>
+                    <td>@Html.DisplayFor(ModelItem => item["Mobile"])</td>
+                    <td>@Html.DisplayFor(ModelItem => item["Email"])</td>
+                    <td> @Html.ActionLink("ch", "ChangeAddress", "Students", new { StudentsId = item["StudentsId"] }, new { @class = "btn btn-default" })  @Html.DisplayFor(ModelItem => item["Address"])</td>
+                    <td>@Html.ActionLink("Edit","Edit","Students", new {StudentsId = item["StudentsId"] },null)</td>
+                </tr>
+            }
+        }else{
+            <tr><td></td></tr>
+        }
+    </table>
+</div>

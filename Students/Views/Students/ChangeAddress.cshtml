@@ -1,0 +1,35 @@
+﻿@using Students.Models;
+@{
+    ViewBag.Title = "ChangeAddress";
+}
+
+@{
+    var address = (List<Address>)ViewBag.address;
+    var StudentsId = ViewBag.StudentsId;   
+ }
+
+<h2>ChangeAddress</h2>
+<div class="container">
+    @using(@Html.BeginForm()){
+     <table class="table">
+         <tbody>
+             @foreach(var item in address){
+                 if(item.StudentsId == null || item.StudentsId == 0){
+                     if(item.StudentsId == StudentsId){
+                        <tr><td> @Html.RadioButton("Id", item.Id , new { @checked = true }) @Html.Label(item.Street+", "+item.City+", "+item.State+", "+item.Country) </td></tr>
+                     }else{
+                        <tr><td> @Html.RadioButton("Id", item.Id, null)  @Html.Label(item.Street+", "+item.City+", "+item.State+", "+item.Country)  </td> </tr>
+                     }
+                 }else{
+                     if(item.StudentsId == StudentsId){
+                        <tr><td> @Html.RadioButton("Id", item.Id , new { @checked = true }) @Html.Label(item.Street+", "+item.City+", "+item.State+", "+item.Country) </td></tr>
+                     }
+                 }
+             }
+             <tr><td> @Html.RadioButton("rm", 0, new { @checked = true }) Add Address</td> </tr>
+             <tr><td> @Html.RadioButton("rm", 1,null) Remove Address</td> </tr>
+         </tbody>
+     </table>
+        <input type="submit" value="Update" />
+    }
+</div>
