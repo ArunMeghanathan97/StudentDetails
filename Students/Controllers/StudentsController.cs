@@ -82,7 +82,7 @@ namespace Students.Controllers
             Boolean flg=false;
             foreach(var item in user){
                 flg = false;
-                foreach (var it in add) 
+                foreach (var it in add)
                     if (it.StudentsId == item.StudentsId) flg = true;
                 
                 if (flg == false)
@@ -90,7 +90,7 @@ namespace Students.Controllers
                     {
                         Key = item.StudentsId.ToString(),
                         Display = item.Name
-                    });                
+                    });
             }
             ViewBag.Std = new SelectList(list, "Key", "Display");
             return View();
